@@ -1,5 +1,6 @@
 import React from 'react';
 import {
+  Card,
   Container,
   Grid,
   makeStyles
@@ -11,7 +12,7 @@ import ProfileDetails from './ProfileDetails';
 const useStyles = makeStyles((theme) => ({
   root: {
     backgroundColor: theme.palette.background.dark,
-    minHeight: '100%',
+    //minHeight: '100%',
     paddingBottom: theme.spacing(3),
     paddingTop: theme.spacing(3)
   }
@@ -21,7 +22,7 @@ const Account = () => {
   const classes = useStyles();
 
   return (
-    <Page
+    <Card
       className={classes.root}
       title="Account"
     >
@@ -48,7 +49,7 @@ const Account = () => {
           </Grid>
         </Grid>
       </Container>
-    </Page>
+    </Card>
   );
 };
 

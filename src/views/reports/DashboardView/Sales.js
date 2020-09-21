@@ -15,6 +15,7 @@ import {
 } from '@material-ui/core';
 import ArrowDropDownIcon from '@material-ui/icons/ArrowDropDown';
 import ArrowRightIcon from '@material-ui/icons/ArrowRight';
+import { useSelector } from 'react-redux';
 
 const useStyles = makeStyles(() => ({
   root: {}
@@ -23,6 +24,7 @@ const useStyles = makeStyles(() => ({
 const Sales = ({ className, ...rest }) => {
   const classes = useStyles();
   const theme = useTheme();
+
 
   const data = {
     datasets: [

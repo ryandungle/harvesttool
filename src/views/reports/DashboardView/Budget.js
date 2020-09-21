@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import clsx from 'clsx';
 import PropTypes from 'prop-types';
 import {
@@ -9,10 +9,12 @@ import {
   Grid,
   Typography,
   colors,
-  makeStyles
+  makeStyles,
+  IconButton
 } from '@material-ui/core';
 import ArrowDownwardIcon from '@material-ui/icons/ArrowDownward';
 import MoneyIcon from '@material-ui/icons/Money';
+import { useSelector } from 'react-redux';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -34,6 +36,22 @@ const useStyles = makeStyles((theme) => ({
 
 const Budget = ({ className, ...rest }) => {
   const classes = useStyles();
+  const plants = useSelector(state => state.plants.plants)
+  const [display, setDisplay] = useState("none")
+
+  const ageOfPlant = (plant) => {
+    const todate = Date.now();
+    const date2 = new Date().toDateString();
+
+
+    const newText = "abc";
+    return todate;
+  }
+
+  const handleClick = () => {
+    const age = ageOfPlant(plants[0])
+    setDisplay(age);
+  }
 
   return (
     <Card
@@ -58,13 +76,15 @@ const Budget = ({ className, ...rest }) => {
               color="textPrimary"
               variant="h3"
             >
-              $24,000
+              {display}
             </Typography>
           </Grid>
           <Grid item>
-            <Avatar className={classes.avatar}>
-              <MoneyIcon />
-            </Avatar>
+            <IconButton onClick={handleClick}>
+              <Avatar className={classes.avatar}>
+                <MoneyIcon />
+              </Avatar>
+            </IconButton>
           </Grid>
         </Grid>
         <Box
@@ -89,8 +109,7 @@ const Budget = ({ className, ...rest }) => {
       </CardContent>
     </Card>
   );
-};
-
+}
 Budget.propTypes = {
   className: PropTypes.string
 };
